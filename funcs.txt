@@ -1,0 +1,13 @@
+// string
+// int
+// float 0.05783947564
+// decimal 0.0778236857365873465873638475
+
+// input, output, logic
+{% comment %} //input - user input from arguments as string - func
+//args received {% endcomment %}
+//call the github - func
+//answer from github 
+//json convert to object c# DYNAMIC keyword function
+//date received
+//process data to see if bellow 10% trehshold func
