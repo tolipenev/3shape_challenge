@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using Newtonsoft.Json;
 
 namespace _3shape_challenge
 {
@@ -9,24 +10,33 @@ namespace _3shape_challenge
         static void Main(string[] args)
         {
             var token = GetUserInput(args);
-            GetRateFromGitHub(token);
+            var json = GetRateFromGitHub(token);
+            var comparison = DeserializeAndCompare(json);
         }
 
         static string GetUserInput(string[] input)
         {
             return input[0];
         } 
-        static void GetRateFromGitHub(string token)
+        static string GetRateFromGitHub(string token)
         {
             var request = HttpWebRequest.Create("https://api.github.com/rate_limit");
             request.Headers.Add(HttpRequestHeader.Accept, "application/vnd.github.v3+json");
             request.Headers.Add(HttpRequestHeader.UserAgent, "usertest");
+            request.Headers.Add(HttpRequestHeader.Authorization, "token "+token);
             var responce = request.GetResponse();
             var stream = responce.GetResponseStream();
             var reader = new StreamReader(stream);
-            var dataread = reader.ReadToEnd();
-
+            var jsonResponce = reader.ReadToEnd();
+            return jsonResponce;
         }
-        
+        static decimal DeserializeAndCompare(string obj)
+        {
+            dynamic Obj = JsonConvert.DeserializeObject(obj);
+            int remaining = Obj.rate.remaining;
+            int limit = Obj.rate.limit;
+            decimal compare = (100 * remaining) / limit;
+            return compare;
+        }
     }
 }
