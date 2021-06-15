@@ -12,8 +12,8 @@ namespace _3shape_challenge
             var token = GetUserInput(args);
             var json = GetRateFromGitHub(token);
             var comparison = DeserializeAndCompare(json);
-            if (comparison <= 10) Environment.Exit(1);
-
+            if (comparison <= 10) Console.WriteLine(1);
+            else Console.WriteLine(0);
         }
 
         static string GetUserInput(string[] input)
