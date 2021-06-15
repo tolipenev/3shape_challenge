@@ -10,4 +10,5 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+<!-- https://stackoverflow.com/a/67937895 -->
 </Project>

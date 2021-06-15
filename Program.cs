@@ -13,19 +13,19 @@ namespace _3shape_challenge
             var json = GetRateFromGitHub(token);
             var comparison = DeserializeAndCompare(json);
             if (comparison <= 10) Environment.Exit(1);
-            
+
         }
 
         static string GetUserInput(string[] input)
         {
             return input[0];
-        } 
+        }
         static string GetRateFromGitHub(string token)
         {
             var request = HttpWebRequest.Create("https://api.github.com/rate_limit");
             request.Headers.Add(HttpRequestHeader.Accept, "application/vnd.github.v3+json");
             request.Headers.Add(HttpRequestHeader.UserAgent, "usertest");
-            request.Headers.Add(HttpRequestHeader.Authorization, "token "+token);
+            request.Headers.Add(HttpRequestHeader.Authorization, "token " + token);
             var responce = request.GetResponse();
             var stream = responce.GetResponseStream();
             var reader = new StreamReader(stream);
