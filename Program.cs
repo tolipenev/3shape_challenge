@@ -12,7 +12,11 @@ namespace _3shape_challenge
             var token = GetUserInput(args);
             var json = GetRateFromGitHub(token);
             var comparison = DeserializeAndCompare(json);
-            if (comparison <= 10) { Console.WriteLine("You are equal or bellow 10%"); Environment.Exit(1); };
+            if (comparison <= 10)
+            {
+                Console.WriteLine("You are equal or bellow 10%");
+                Environment.Exit(1);
+            };
         }
 
         static string GetUserInput(string[] input)
@@ -25,11 +29,11 @@ namespace _3shape_challenge
             request.Headers.Add(HttpRequestHeader.Accept, "application/vnd.github.v3+json");
             request.Headers.Add(HttpRequestHeader.UserAgent, "usertest");
             request.Headers.Add(HttpRequestHeader.Authorization, "token " + token);
-            var responce = request.GetResponse();
-            var stream = responce.GetResponseStream();
+            var response = request.GetResponse();
+            var stream = response.GetResponseStream();
             var reader = new StreamReader(stream);
-            var jsonResponce = reader.ReadToEnd();
-            return jsonResponce;
+            var jsonResponse = reader.ReadToEnd();
+            return jsonResponse;
         }
         static decimal DeserializeAndCompare(string obj)
         {
