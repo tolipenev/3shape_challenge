@@ -1,6 +1,6 @@
 # 3shape Challenge
 
-Application for calculating the remaining GitHub API points.
+Application for calculating if the GitHub API rates are above 10% of your total.
 
 ## Getting the source code
 
@@ -42,4 +42,4 @@ $ docker run -d -e TOKEN="" IMAGE_ID
 
 ## Debugging
 
-If you would like to test the application, provide a token in the _launch.json_ in the _"args":_ field.
+If you would like to test the application, provide a token in the `.vscode/launch.json` in the `"args": [<TOKEN>],`.
