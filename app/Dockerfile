@@ -3,11 +3,11 @@ WORKDIR /source
 
 # copy and publish app and libraries
 COPY . .
-RUN dotnet build -c release -o /3shape_challenge
+RUN dotnet build -c release -o /app
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/runtime:5.0
 ENV TOKEN=""
-WORKDIR /3shape_challenge
-COPY --from=build /3shape_challenge .
+WORKDIR /app
+COPY --from=build /app .
 ENTRYPOINT dotnet 3shape_challenge.dll $TOKEN
