@@ -3,7 +3,7 @@ WORKDIR /3shape_challenge/app
 
 # copy and publish app and libraries
 COPY . .
-RUN dotnet build -c release -o /app
+RUN dotnet build -c release -o /3shape_challenge/app
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/runtime:5.0
