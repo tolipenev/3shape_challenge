@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /source/app
 
 # copy and publish app and libraries
-COPY . .
+COPY /app .
 RUN dotnet build -c release -o /app
 
 # final stage/image
