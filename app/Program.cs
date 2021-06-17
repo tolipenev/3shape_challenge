@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace _3shape_challenge
 {
-    class Program
+    public class Challenge
     {
         static void Main(string[] args)
         {
@@ -14,16 +14,16 @@ namespace _3shape_challenge
             var comparison = DeserializeAndCompare(json);
             if (comparison <= 10)
             {
-                Console.WriteLine("You are equal or bellow 10%");
+                Console.WriteLine("You are equal or below 10%");
                 Environment.Exit(1);
             };
         }
 
-        static string GetUserInput(string[] input)
+        public static string GetUserInput(string[] input)
         {
             return input[0];
         }
-        static string GetRateFromGitHub(string token)
+        public static string GetRateFromGitHub(string token)
         {
             var request = HttpWebRequest.Create("https://api.github.com/rate_limit");
             request.Headers.Add(HttpRequestHeader.Accept, "application/vnd.github.v3+json");
@@ -35,7 +35,7 @@ namespace _3shape_challenge
             var jsonResponse = reader.ReadToEnd();
             return jsonResponse;
         }
-        static decimal DeserializeAndCompare(string obj)
+        public static decimal DeserializeAndCompare(string obj)
         {
             dynamic Obj = JsonConvert.DeserializeObject(obj);
             int remaining = Obj.rate.remaining;

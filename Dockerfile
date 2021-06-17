@@ -6,8 +6,8 @@ COPY /app ./app
 RUN cd app && dotnet build -o dist
 
 # copy and test app
-# COPY /tests ./tests
-# RUN cd tests && dotnet test
+COPY /tests ./tests
+RUN cd tests && dotnet test
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/runtime:5.0
